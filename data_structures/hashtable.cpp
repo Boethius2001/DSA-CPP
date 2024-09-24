@@ -22,7 +22,5 @@ int main()
         std::cout << element.first  << " : " << element.second << std::endl;
     }
 
-
-
     return 0;
 }
