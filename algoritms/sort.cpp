@@ -31,12 +31,29 @@ void bouble_sort(std::vector<int> &arr){
     }
 }
 
+void insertion_sort(std::vector<int> &arr){
+
+    for(int i=1; i<arr.size(); i++){
+        int temp = arr[i];
+        int j = i - 1;
+
+        while(j >= 0 && arr[j] > temp){
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = temp;
+
+    }
+
+}
+
 int main(){
 
     std::vector<int> arr = {1,4,3,2,5,7,6,8,10,9};
 
-    selection_sort(arr);
+    //selection_sort(arr);
     //bouble_sort(arr);
+    insertion_sort(arr);
 
     for(int element : arr){
         std::cout << element << " ";
