@@ -1,28 +1,63 @@
 #include <iostream>
-#include <unordered_map>
+#include <vector>
 
-using std::string;
+void selection_sort(std::vector<int> &arr){
 
-int main()
-{
-    std::unordered_map<string,int> roman_nums;
+    for(int i=0 ; i<arr.size() -1 ; i++){
+        int min = i;
+        for(int j = 0 + i; j<arr.size(); j++){
+            if(arr[j] < arr[min]){
+                min = j;
+            }
 
-    roman_nums["I"] = 1;
-    roman_nums["II"] = 2;
-    roman_nums["III"] = 3;
-    roman_nums["IV"] = 4;
-    roman_nums["V"] = 5;
-    roman_nums["VI"] = 6;
-    roman_nums["VII"] = 7;
-    roman_nums["VIII"] = 8;
-    roman_nums["IX"] = 9;
-    roman_nums["X"] = 10;
+           int temp = arr[i];
+           arr[i] = arr[min];
+           arr[min] = temp; 
 
-    for(auto element : roman_nums){
-        std::cout << element.first  << " : " << element.second << std::endl;
+        }
     }
 
+}
 
+void bouble_sort(std::vector<int> &arr){
+    for(int i=0; i<arr.size(); i++){
+        for(int j=0; j<arr.size() - i -1; j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+void insertion_sort(std::vector<int> &arr){
+
+    for(int i=1; i<arr.size(); i++){
+        int temp = arr[i];
+        int j = i - 1;
+
+        while(j >= 0 && arr[j] > temp){
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = temp;
+
+    }
+
+}
+
+int main(){
+
+    std::vector<int> arr = {1,4,3,2,5,7,6,8,10,9};
+
+    //selection_sort(arr);
+    //bouble_sort(arr);
+    insertion_sort(arr);
+
+    for(int element : arr){
+        std::cout << element << " ";
+    }
 
     return 0;
 }
